@@ -16,13 +16,13 @@ dbConnection();
 app.use( express.static('public') );
 
 //CORS
-// app.use( cors() );
-const corsOptions ={
-    origin:'*', 
-    credentials:true,      
-    optionSuccessStatus:200,
- }
-app.use(cors(corsOptions)) // Use this after the variable declaration
+app.use( cors() );
+// const corsOptions ={
+//     origin:'*', 
+//     credentials:true,      
+//     optionSuccessStatus:200,
+//  }
+// app.use(cors(corsOptions)) 
 
 // Lectura y parseo del body
 app.use( express.json() );
