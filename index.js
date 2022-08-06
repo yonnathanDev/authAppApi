@@ -16,19 +16,18 @@ dbConnection();
 app.use( express.static('public') );
 
 //CORS
-app.use( cors() );
-// const corsOptions ={
-//     origin:'*', 
-//     credentials:true,      
-//     optionSuccessStatus:200,
-//  }
-// app.use(cors(corsOptions)) 
+// app.use( cors() );
+
+var corsOptions = {
+    origin: 'http://example.com',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 // Lectura y parseo del body
 app.use( express.json() );
 
 // Rutas
-app.use( '/api/auth', require('./routes/auth') );
+app.use( '/api/auth', cors(corsOptions),require('./routes/auth') );
 
 // Manejar demás rutas
 app.get('*', (req, res) => {
